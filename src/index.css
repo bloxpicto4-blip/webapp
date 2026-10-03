@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   1. DESIGN TOKENS & CENTRALIZED COLOR VARIABLES
+   يمكنك تعديل ألوان وهوية الموقع بالكامل من هذا القسم فقط
+   ========================================================================== */
+:root {
+  /* Backgrounds */
+  --bg-primary: #08090D;
+  --bg-secondary: #0B0D12;
+  --bg-elevated: #10121A;
+  --bg-glass: rgba(16, 18, 26, 0.72);
+
+  /* Typography Colors */
+  --text-primary: #F2F4F8;
+  --text-secondary: #9A9FA8;
+  --text-muted: #525866;
+  --text-dark-word: #383D4B;
+
+  /* Accent Colors */
+  --accent-lime: #D9FF43;
+  --accent-lime-soft: rgba(217, 255, 67, 0.14);
+  --accent-lime-glow: rgba(217, 255, 67, 0.36);
+  --accent-indigo: #1B1838;
+  --accent-violet: #6D4AFF;
+
+  /* Hairlines & Borders */
+  --border-subtle: rgba(242, 244, 248, 0.08);
+  --border-hover: rgba(217, 255, 67, 0.45);
+
+  /* Font Families (2+1 System: Display + Arabic Body + Mono Numerals) */
+  --font-display-ar: 'Cairo', 'IBM Plex Sans Arabic', sans-serif;
+  --font-body-ar: 'IBM Plex Sans Arabic', sans-serif;
+  --font-display-en: 'Syne', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Motion Curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* ==========================================================================
+   2. BASE & RESET
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body-ar);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body-ar);
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Subtle Film Grain Texture Overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 45;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   3. TYPOGRAPHY HIERARCHY & UTILITIES
+   ========================================================================== */
+.font-display-ar {
+  font-family: var(--font-display-ar);
+}
+
+.font-body-ar {
+  font-family: var(--font-body-ar);
+}
+
+.font-display-en {
+  font-family: var(--font-display-en);
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Gradient Text for Hero "تجربة" */
+.text-gradient-metallic {
+  background: linear-gradient(135deg, #FFFFFF 0%, #D4D9E3 48%, #6D7484 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Outlined Text for "IT" in MAKE IT MOVE */
+.text-stroke-dark {
+  color: transparent;
+  -webkit-text-stroke: 2.5px #08090D;
+}
+
+@media (min-width: 768px) {
+  .text-stroke-dark {
+    -webkit-text-stroke: 4px #08090D;
+  }
+}
+
+/* ==========================================================================
+   3D EXTRUDED SIGNATURE TYPOGRAPHY (MADE BY ABDELRHMAN MOHAMED)
+   ========================================================================== */
+.scene-3d-perspective {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.text-3d-lime {
+  color: #F2F4F8;
+  text-shadow:
+    0 1px 0 #c6eb38,
+    0 2px 0 #b3d62e,
+    0 3px 0 #9ec022,
+    0 4px 0 #85a419,
+    0 5px 0 #6b8511,
+    0 6px 0 #50650b,
+    0 7px 0 #374606,
+    0 8px 0 #1f2803,
+    0 14px 28px rgba(0, 0, 0, 0.85),
+    0 0 42px rgba(217, 255, 67, 0.32);
+}
+
+.text-3d-chrome {
+  color: #FFFFFF;
+  text-shadow:
+    0 1px 0 #d0d5e0,
+    0 2px 0 #aeb6c7,
+    0 3px 0 #8b95ab,
+    0 4px 0 #6a748c,
+    0 5px 0 #4d566b,
+    0 6px 0 #343b4d,
+    0 7px 0 #1f2430,
+    0 8px 0 #11141c,
+    0 16px 32px rgba(0, 0, 0, 0.9),
+    0 0 38px rgba(157, 123, 255, 0.35);
+}
+
+.text-3d-wireframe {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #D9FF43;
+  text-shadow:
+    0 4px 0 rgba(217, 255, 67, 0.28),
+    0 8px 0 rgba(217, 255, 67, 0.14),
+    0 12px 24px rgba(0, 0, 0, 0.9);
+}
+
+/* Animated Underline for Contact & Editorial Links */
+.editorial-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.editorial-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-lime);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s var(--ease-out-expo);
+}
+
+.editorial-underline:hover::after,
+.editorial-underline:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: right center;
+}
+
+/* ==========================================================================
+   4. POSTER ART & INTERACTIVE SURFACES
+   ========================================================================== */
+.project-poster {
+  background: linear-gradient(165deg, var(--bg-elevated) 0%, var(--bg-primary) 100%);
+  border: 1px solid var(--border-subtle);
+  transition:
+    transform 0.55s var(--ease-out-expo),
+    border-color 0.45s var(--ease-out-expo),
+    box-shadow 0.55s var(--ease-out-expo);
+}
+
+.project-poster:hover,
+.project-poster:focus-within,
+.project-poster.is-active-mobile {
+  border-color: var(--border-hover);
+  box-shadow: 0 28px 80px -24px rgba(0, 0, 0, 0.85), 0 0 40px -12px rgba(217, 255, 67, 0.16);
+}
+
+/* Keyboard Focus Accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-lime);
+  outline-offset: 4px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #232734;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-lime);
+}
+
+/* ==========================================================================
+   5. REDUCED MOTION COMPLIANCE
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
